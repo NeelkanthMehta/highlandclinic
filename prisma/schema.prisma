@@ -1,0 +1,240 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  PATIENT
+  DOCTOR
+  ADMIN
+}
+
+enum LeaveType {
+  FULL_DAY
+  MORNING
+  AFTERNOON
+}
+
+enum PatientType {
+  MYSELF
+  SOMEONE_ELSE
+}
+
+enum AppointmentStatus {
+  PAYMENT_PENDING
+  BOOKING_CONFIRMED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+  CASH
+}
+
+enum TransactionStatus {
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+model User {
+  id                  String              @id @default(uuid())
+  name                String              @default("NO_NAME")
+  email               String              @unique
+  password            String?
+  emailVerified       DateTime?
+  role                Role                @default(PATIENT)
+  isRootAdmin         Boolean?            @default(false)
+  image               String?
+  dateofbirth         DateTime?
+  phoneNumber         String?
+  address             String?             @db.Text
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+
+  accounts            Account[]
+  doctorProfile       DoctorProfile?
+  doctorLeaves        DoctorLeave[]
+  doctorAppointments  Appointment[]       @relation("DoctorAppointments")
+  patientAppointments Appointment[]       @relation("PatientAppointments")
+  doctorTestimonials  DoctorTestimonial[] @relation("DoctorTestimonials")
+  patientTestimonials DoctorTestimonial[] @relation("PatientTestimonials")
+  doctorTransactions  Transaction[]       @relation("DoctorTransactions")
+
+  @@map("User")
+}
+
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?             @db.Text
+  access_token      String?             @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?             @db.Text
+  session_state     String?
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+
+  user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+  @@map("Account")
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@id([identifier, token])
+  @@map("VerificationToken")
+}
+
+model DoctorProfile {
+  profileId       String   @id @default(uuid())
+  userId          String   @unique
+  specialty       String
+  brief           String   @db.Text
+  credentials     String   @db.Text
+  languages       String[]
+  rating          Float    @default(0)
+  reviewCount     Int      @default(0)
+  specializations String[]
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("doctor_profiles")
+}
+
+model DoctorLeave {
+  leaveId   String    @id @default(uuid())
+  doctorId  String
+  leaveDate DateTime  @db.Date
+  leaveType LeaveType
+  reason    String?   @db.Text
+  createdAt DateTime  @default(now())
+
+  doctor    User      @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+
+  @@unique([doctorId, leaveDate])
+  @@map("doctor_leave")
+}
+
+model AppSettings {
+  id                      String @id @default("global")
+  slotsPerHour            Int    @default(2)
+  startTime               String @default("09:00")
+  endTime                 String @default("17:00")
+  slotReservationDuration Int    @default(10)
+
+  @@map("app_settings")
+}
+
+model WorkingDay {
+  dayId        String  @id @default(uuid())
+  dayOfWeek    Int
+  isWorkingDay Boolean @default(true)
+
+  @@map("working_days")
+}
+
+model Appointment {
+  appointmentId        String            @id @default(uuid())
+  doctorId             String
+  userId               String?
+  guestIdentifier      String?
+  patientType          PatientType
+  patientRelation      String?
+  patientName          String
+  paymentMethod        String?
+  paymentResult        Json?
+  paidAt               DateTime?
+  appointmentStartUTC  DateTime
+  appointmentEndUTC    DateTime
+  phoneNumber          String?
+  reasonForVisit       String?
+  additionalNotes      String?
+  patientdateofbirth   DateTime?
+  reservationExpiresAt DateTime?
+  status               AppointmentStatus @default(PAYMENT_PENDING)
+  createdAt            DateTime          @default(now())
+  updatedAt            DateTime          @updatedAt
+
+  doctor               User              @relation("DoctorAppointments", fields: [doctorId], references: [id], onDelete: Cascade)
+  patient              User?             @relation("PatientAppointments", fields: [userId], references: [id], onDelete: SetNull)
+  testimonial          DoctorTestimonial?
+  transactions         Transaction[]
+
+  @@map("appointments")
+}
+
+model DoctorTestimonial {
+  testimonialId   String   @id @default(uuid())
+  appointmentId  String   @unique
+  doctorId       String
+  patientId      String?
+  testimonialText String   @db.Text
+  rating         Float?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  appointment    Appointment @relation(fields: [appointmentId], references: [appointmentId], onDelete: Cascade)
+  doctor         User        @relation("DoctorTestimonials", fields: [doctorId], references: [id], onDelete: Cascade)
+  patient        User?       @relation("PatientTestimonials", fields: [patientId], references: [id], onDelete: SetNull)
+
+  @@map("doctor_testimonials")
+}
+
+model Transaction {
+  id                   String            @id @default(uuid())
+  appointmentId        String
+  doctorId             String
+  paymentGateway       String
+  gatewayTransactionId String            @unique
+  amount               Float
+  currency             String
+  status               TransactionStatus
+  transactionDate      DateTime          @default(now())
+  notes                String?
+  paymentDetails       Json?
+
+  appointment          Appointment       @relation(fields: [appointmentId], references: [appointmentId], onDelete: Cascade)
+  doctor               User              @relation("DoctorTransactions", fields: [doctorId], references: [id], onDelete: Cascade)
+
+  @@map("transactions")
+}
+
+model BannerImage {
+  id        String   @id @default(uuid())
+  name      String
+  imageUrl  String
+  fileKey   String   @unique
+  order     Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("banner_images")
+}
+
+model Department {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  iconName  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("departments")
+}
+
