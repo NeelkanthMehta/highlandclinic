@@ -37,11 +37,13 @@ export default function OurDoctors({
             {doctors.map((doc) => (
               <DoctorCard
                 key={doc.id}
+                id={doc.id}
                 name={doc.name}
                 specialty={doc.specialty}
                 rating={doc.rating}
                 reviewCount={doc.reviewCount}
                 imageSrc={doc.imageSrc}
+                profileHref={`/doctors/${doc.id}`}
                 className="w-[calc(100vw-4rem)] max-w-none sm:w-96"
               />
             ))}
