@@ -4,7 +4,7 @@ export { default as HomeBanner } from "./home-banner";
 export type { HomeBannerProps } from "./home-banner";
 export { default as OurDepartments, DUMMY_DEPARTMENTS } from "./our-departments";
 export type { OurDepartmentsProps, DepartmentData } from "./our-departments";
-export { default as OurDoctors, DUMMY_DOCTORS } from "./our-doctors";
+export { default as OurDoctors } from "./our-doctors";
 export type { OurDoctorsProps, DoctorData } from "./our-doctors";
 export { default as PatientTestimonials, DUMMY_REVIEWS } from "./patient-testimonials";
 export type { PatientTestimonialsProps, ReviewData } from "./patient-testimonials";

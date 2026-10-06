@@ -3,47 +3,16 @@ import DoctorCard from "@/components/molecules/doctorcard";
 import CarouselSlider from "@/components/ui/carousel-slider";
 
 export interface DoctorData {
-  id: string | number;
+  id: string;
   name: string;
   specialty: string;
   rating: number;
   reviewCount: number;
-  imageSrc: string;
+  imageSrc: string | null;
 }
 
-/**
- * Placeholder Dummy Data - Replace with database fetch (e.g., Prisma, Supabase, API route)
- */
-export const DUMMY_DOCTORS: DoctorData[] = [
-  {
-    id: "1",
-    name: "Dr. Sarah Mitchell",
-    specialty: "Cardiology",
-    rating: 4.9,
-    reviewCount: 127,
-    imageSrc: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=300&auto=format&fit=crop",
-  },
-  {
-    id: "2",
-    name: "Dr. Sarah Mitchell",
-    specialty: "Cardiology",
-    rating: 4.9,
-    reviewCount: 127,
-    imageSrc: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=300&auto=format&fit=crop",
-  },
-  {
-    id: "3",
-    name: "Dr. Sarah Mitchell",
-    specialty: "Cardiology",
-    rating: 4.9,
-    reviewCount: 127,
-    imageSrc: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=300&auto=format&fit=crop",
-  },
-];
-
 export interface OurDoctorsProps {
-  /** Doctor records array (pass DB query results here) */
-  doctors?: DoctorData[];
+  doctors: DoctorData[];
   /** Section heading title */
   heading?: string;
   /** Custom container styling */
@@ -51,7 +20,7 @@ export interface OurDoctorsProps {
 }
 
 export default function OurDoctors({
-  doctors = DUMMY_DOCTORS,
+  doctors,
   heading = "Our Doctors",
   className = "",
 }: OurDoctorsProps) {
@@ -63,19 +32,25 @@ export default function OurDoctors({
           {heading}
         </h2>
 
-        <CarouselSlider>
-          {doctors.map((doc) => (
-            <DoctorCard
-              key={doc.id}
-              name={doc.name}
-              specialty={doc.specialty}
-              rating={doc.rating}
-              reviewCount={doc.reviewCount}
-              imageSrc={doc.imageSrc}
-              className="w-[calc(100vw-4rem)] max-w-none sm:w-96"
-            />
-          ))}
-        </CarouselSlider>
+        {doctors.length > 0 ? (
+          <CarouselSlider>
+            {doctors.map((doc) => (
+              <DoctorCard
+                key={doc.id}
+                name={doc.name}
+                specialty={doc.specialty}
+                rating={doc.rating}
+                reviewCount={doc.reviewCount}
+                imageSrc={doc.imageSrc}
+                className="w-[calc(100vw-4rem)] max-w-none sm:w-96"
+              />
+            ))}
+          </CarouselSlider>
+        ) : (
+          <p className="text-slate-500 dark:text-slate-400">
+            No doctors are currently available.
+          </p>
+        )}
       </div>
     </section>
   );

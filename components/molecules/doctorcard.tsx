@@ -4,16 +4,12 @@ import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface DoctorCardProps {
-  /** Name of the doctor, e.g., "Dr. Sarah Mitchell" */
-  name?: string;
-  /** Specialty or department, e.g., "Cardiology" */
-  specialty?: string;
-  /** Average rating score, e.g., 4.9 */
-  rating?: number;
-  /** Number of total reviews, e.g., 127 */
-  reviewCount?: number;
+  name: string;
+  specialty: string;
+  rating: number;
+  reviewCount: number;
   /** Profile image URL */
-  imageSrc?: string;
+  imageSrc: string | null;
   /** View profile click callback */
   onViewProfile?: () => void;
   /** Custom container class names */
@@ -21,11 +17,11 @@ export interface DoctorCardProps {
 }
 
 export default function DoctorCard({
-  name = "Dr. Sarah Mitchell",
-  specialty = "Cardiology",
-  rating = 4.9,
-  reviewCount = 127,
-  imageSrc = "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=300&auto=format&fit=crop",
+  name,
+  specialty,
+  rating,
+  reviewCount,
+  imageSrc,
   onViewProfile,
   className,
 }: DoctorCardProps) {
@@ -40,11 +36,26 @@ export default function DoctorCard({
       <div className="flex items-center gap-4 mb-4">
         {/* Doctor Avatar Image */}
         <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 bg-slate-100 dark:bg-slate-800 border border-slate-100 dark:border-slate-800">
-          <img
-            src={imageSrc}
-            alt={name}
-            className="w-full h-full object-cover object-top"
-          />
+          {imageSrc ? (
+            <img
+              src={imageSrc}
+              alt={name}
+              className="w-full h-full object-cover object-top"
+            />
+          ) : (
+            <span
+              aria-hidden="true"
+              className="flex h-full w-full items-center justify-center text-lg font-semibold text-slate-500 dark:text-slate-400"
+            >
+              {name
+                .replace(/^Dr\.\s*/i, "")
+                .split(/\s+/)
+                .slice(0, 2)
+                .map((part) => part[0])
+                .join("")
+                .toUpperCase()}
+            </span>
+          )}
         </div>
 
         {/* Doctor Details */}
