@@ -1,7 +1,7 @@
 import React from "react";
 import DepartmentCard from "@/components/molecules/departmentcard";
 import CarouselSlider from "@/components/ui/carousel-slider";
-import { Heart, Activity, Stethoscope, Bone, Eye, Brain, LucideIcon } from "lucide-react";
+import { Heart, Activity, Stethoscope, Bone, Eye, Brain, Sparkles, Smile, LucideIcon } from "lucide-react";
 
 export interface DepartmentData {
   id: string | number;
@@ -11,9 +11,6 @@ export interface DepartmentData {
   description?: string;
 }
 
-/**
- * Placeholder Dummy Data - Replace with database fetch (e.g., Prisma, Supabase, API route)
- */
 export const DUMMY_DEPARTMENTS: DepartmentData[] = [
   { id: "1", title: "Cardiology", icon: Heart, slug: "cardiology" },
   { id: "2", title: "Neurology", icon: Brain, slug: "neurology" },
@@ -21,6 +18,8 @@ export const DUMMY_DEPARTMENTS: DepartmentData[] = [
   { id: "4", title: "Orthopedics", icon: Bone, slug: "orthopedics" },
   { id: "5", title: "Ophthalmology", icon: Eye, slug: "ophthalmology" },
   { id: "6", title: "General Medicine", icon: Activity, slug: "general-medicine" },
+  { id: "7", title: "Dermatology", icon: Sparkles, slug: "dermatology" },
+  { id: "8", title: "Dental Care", icon: Smile, slug: "dental-care" },
 ];
 
 export interface OurDepartmentsProps {
@@ -56,13 +55,17 @@ export default function OurDepartments({
         </h2>
 
         <CarouselSlider>
-          {departments.map((dept) => (
-            <DepartmentCard
-              key={dept.id}
-              title={dept.title}
-              icon={dept.icon}
-            />
-          ))}
+          {departments.map((dept) => {
+            const slug = dept.slug || dept.title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+            return (
+              <DepartmentCard
+                key={dept.id}
+                title={dept.title}
+                icon={dept.icon}
+                href={`/departments/${slug}`}
+              />
+            );
+          })}
         </CarouselSlider>
       </div>
     </section>
