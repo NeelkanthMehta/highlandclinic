@@ -46,6 +46,7 @@ next-env.d.ts
 /.agents/
 /.claude/
 /.windsurf/
+/.vscode/mcp.json
 
 # local workspaces
 /scratch/
