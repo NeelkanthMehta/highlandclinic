@@ -153,4 +153,4 @@ npm run typecheck
 
 ## 📄 License
 
-This project is proprietary and confidential to Highland Clinic.
+Licensed under the MIT License. See the LICENSE file for the full license text and copyright permissions.
