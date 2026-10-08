@@ -1,5 +1,8 @@
 import "dotenv/config";
+import bcrypt from "bcryptjs";
 import { prisma } from "../lib/prisma";
+
+const DEFAULT_PASSWORD_HASH = bcrypt.hashSync("Password123!", 10);
 
 const doctorsData = [
   {
@@ -116,11 +119,12 @@ async function main() {
   console.log("Seeding doctor records into backend database via Prisma...");
 
   for (const doc of doctorsData) {
-    // Upsert User and DoctorProfile
+    // Upsert User and DoctorProfile with password hash
     const user = await prisma.user.upsert({
       where: { email: doc.email },
       update: {
         name: doc.name,
+        password: DEFAULT_PASSWORD_HASH,
         image: doc.image,
         role: doc.role,
         phoneNumber: doc.phoneNumber,
@@ -129,6 +133,7 @@ async function main() {
       create: {
         name: doc.name,
         email: doc.email,
+        password: DEFAULT_PASSWORD_HASH,
         role: doc.role,
         image: doc.image,
         phoneNumber: doc.phoneNumber,
@@ -164,7 +169,7 @@ async function main() {
     console.log(`Upserted doctor: ${doc.name} (${doc.profile.specialty})`);
   }
 
-  console.log("Seeding complete successfully!");
+  console.log("Seeding complete successfully! Password for all doctors set to: Password123!");
 }
 
 main()

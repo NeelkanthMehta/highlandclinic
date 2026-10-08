@@ -38,6 +38,8 @@ export default function CarouselSlider({ children, className }: CarouselSliderPr
       {/* Horizontal Cards Scroll Track (Single Line) */}
       <div
         ref={scrollContainerRef}
+        role="region"
+        aria-label="Carousel items"
         className="flex items-center gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 px-2 scroll-smooth"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >

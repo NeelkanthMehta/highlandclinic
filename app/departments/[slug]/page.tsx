@@ -453,7 +453,7 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
                   </div>
 
                   <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 italic leading-relaxed">
-                    "{t.testimonialText}"
+                    &quot;{t.testimonialText}&quot;
                   </p>
 
                   <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
@@ -543,4 +543,3 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
     </main>
   );
 }
-
