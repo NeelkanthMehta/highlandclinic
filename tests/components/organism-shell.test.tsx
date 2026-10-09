@@ -38,6 +38,12 @@ describe("shared UI shell", () => {
       "href",
       "/book-appointment"
     );
+    const profileLink = screen.getByRole("link", { name: /User Profile/ });
+    const signOutButton = screen.getByRole("button", { name: "Sign out" });
+    expect(profileLink).toHaveAttribute("href", "/user/profile");
+    expect(profileLink.compareDocumentPosition(signOutButton)).toBe(
+      Node.DOCUMENT_POSITION_FOLLOWING
+    );
 
     fireEvent.click(screen.getByRole("button", { name: "Toggle theme" }));
     expect(document.documentElement).toHaveClass("dark");

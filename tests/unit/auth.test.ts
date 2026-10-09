@@ -59,7 +59,7 @@ describe("authentication helpers", () => {
 
   it("rejects tampered and expired tokens", async () => {
     const token = await createSessionToken(session);
-    const tampered = `${token.slice(0, -1)}x`;
+    const tampered = token.slice(0, -10) + "0123456789";
     const expired = await new SignJWT({ ...session })
       .setProtectedHeader({ alg: "HS256" })
       .setExpirationTime("0s")

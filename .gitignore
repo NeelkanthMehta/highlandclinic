@@ -34,18 +34,16 @@
 # ==========================================
 # Environment Files & Secret Keys
 # ==========================================
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-.env*.local
-.env.development
-.env.test
-.env.production
+.env*
 !.env.example
 !.env.template
 !.env.sample
+
+# ==========================================
+# Markdown Documentation
+# ==========================================
+*.md
+!/README.md
 
 # ==========================================
 # Prisma & Database Artifacts
@@ -96,9 +94,20 @@ lerna-debug.log*
 ehthumbs.db
 Thumbs.db
 Desktop.ini
+.directory
+$RECYCLE.BIN/
+System Volume Information/
+*~
+*.stackdump
 *.pem
 *.crt
 *.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.secret
+*.secrets
 
 # ==========================================
 # IDEs & Code Editor Settings
@@ -117,6 +126,7 @@ Desktop.ini
 # ==========================================
 # AI Agent Tooling & Local Workspaces
 # ==========================================
+/.gitignore
 /.agents/
 /.claude/
 /.windsurf/

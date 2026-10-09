@@ -75,10 +75,10 @@ export default function SignUpPage() {
       }
 
       setSuccessMessage("Account created successfully! Logging you in...");
+      router.refresh();
 
       setTimeout(() => {
         router.push("/");
-        router.refresh();
       }, 1000);
     } catch (err) {
       console.error(err);

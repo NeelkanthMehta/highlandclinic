@@ -59,10 +59,10 @@ function SignInForm() {
       }
 
       setSuccessMessage(`Welcome back, ${data.user.name}! Redirecting...`);
+      router.refresh();
 
       setTimeout(() => {
         router.push(callbackUrl);
-        router.refresh();
       }, 1000);
     } catch (err) {
       console.error(err);
