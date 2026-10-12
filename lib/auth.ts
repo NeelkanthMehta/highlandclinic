@@ -36,16 +36,19 @@ export async function verifyPassword(
   return bcrypt.compare(password, hash);
 }
 
+export const SESSION_MAX_AGE_SECONDS = 30 * 60; // 30 minutes of inactivity
+
 /**
- * Creates a signed JWT session token valid for 7 days.
+ * Creates a signed JWT session token valid for 30 minutes of inactivity.
  */
 export async function createSessionToken(
-  payload: UserSessionPayload
+  payload: UserSessionPayload,
+  expiresIn: string = "30m"
 ): Promise<string> {
   return new SignJWT({ ...payload })
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
-    .setExpirationTime("7d")
+    .setExpirationTime(expiresIn)
     .sign(getJwtSecret());
 }
 
@@ -70,16 +73,19 @@ export async function verifySessionToken(
 }
 
 /**
- * Sets the session cookie on response headers.
+ * Sets the session cookie on response headers with 30 minutes inactivity timeout.
  */
-export async function setSessionCookie(token: string) {
+export async function setSessionCookie(
+  token: string,
+  maxAge: number = SESSION_MAX_AGE_SECONDS
+) {
   const cookieStore = await cookies();
   cookieStore.set(COOKIE_NAME, token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
     path: "/",
-    maxAge: 7 * 24 * 60 * 60, // 7 days
+    maxAge,
   });
 }
 
