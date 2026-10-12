@@ -21,8 +21,7 @@ export const authConfig = {
 
       const isProtectedRoute =
         pathname.startsWith("/admin") ||
-        pathname.startsWith("/user") ||
-        pathname.startsWith("/profile");
+        pathname.startsWith("/user");
 
       const isAuthRoute = pathname === "/sign-in" || pathname === "/sign-up";
 

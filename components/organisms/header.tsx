@@ -156,7 +156,7 @@ export default function Header({ user: propUser }: HeaderProps = {}) {
             <div className="relative flex items-center gap-2 pl-2 border-l border-slate-200 dark:border-zinc-800" ref={dropdownRef}>
               {/* Patient Avatar & Profile Link */}
               <Link
-                href="/user/profile"
+                href="/profile"
                 aria-label="User Profile"
                 title="View User Profile"
                 className="flex items-center gap-2 p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors group"

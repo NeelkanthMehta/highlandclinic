@@ -40,7 +40,7 @@ describe("shared UI shell", () => {
     );
     const profileLink = screen.getByRole("link", { name: /User Profile/ });
     const signOutButton = screen.getByRole("button", { name: "Sign out" });
-    expect(profileLink).toHaveAttribute("href", "/user/profile");
+    expect(profileLink).toHaveAttribute("href", "/profile");
     expect(profileLink.compareDocumentPosition(signOutButton)).toBe(
       Node.DOCUMENT_POSITION_FOLLOWING
     );
