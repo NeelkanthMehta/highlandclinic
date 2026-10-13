@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import {
   PatientProfile,
   Appointment,
@@ -99,8 +100,8 @@ export default function UserProfilePage({ patient }: ProfilePageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50/60 dark:bg-slate-950 py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto space-y-8">
+    <div className="min-h-screen bg-slate-50/60 dark:bg-slate-950 py-6 sm:py-8 px-3.5 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8">
         
         {/* Toast / Notification Alert */}
         {notification && (
@@ -130,8 +131,36 @@ export default function UserProfilePage({ patient }: ProfilePageProps) {
           </div>
         </div>
 
+        {/* Navigation Tabs */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+          <Link
+            href="/profile"
+            className="px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-blue-600 text-white shadow-xs"
+          >
+            Overview & Details
+          </Link>
+          <Link
+            href="/profile/appointments"
+            className="px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+          >
+            Appointments & History
+          </Link>
+          <Link
+            href="/profile/medical"
+            className="px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+          >
+            Medical & Insurance
+          </Link>
+          <Link
+            href="/profile/security"
+            className="px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+          >
+            Security & Access
+          </Link>
+        </div>
+
         {/* 2. Personal Information Card */}
-        <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-6">
+        <div className="bg-white dark:bg-slate-900 rounded-2xl p-4 sm:p-8 border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-6">
           <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
             <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
               Personal Information

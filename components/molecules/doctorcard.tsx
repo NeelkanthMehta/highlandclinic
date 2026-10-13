@@ -36,14 +36,14 @@ export default function DoctorCard({
   return (
     <Card
       className={cn(
-        "w-full max-w-sm p-5 border border-slate-200/90 rounded-2xl bg-white dark:bg-slate-900 dark:border-slate-800 shadow-xs hover:shadow-md transition-all duration-200 select-none flex flex-col justify-between",
+        "w-full max-w-sm p-4 sm:p-5 border border-slate-200/90 rounded-2xl bg-white dark:bg-slate-900 dark:border-slate-800 shadow-xs hover:shadow-md transition-all duration-200 select-none flex flex-col justify-between",
         className
       )}
     >
       {/* Top Section: Avatar & Info */}
-      <div className="flex items-center gap-4 mb-4">
+      <div className="flex items-center gap-3.5 sm:gap-4 mb-4">
         {/* Doctor Avatar Image */}
-        <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 bg-slate-100 dark:bg-slate-800 border border-slate-100 dark:border-slate-800">
+        <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden shrink-0 bg-slate-100 dark:bg-slate-800 border border-slate-100 dark:border-slate-800">
           {imageSrc ? (
             <img
               src={imageSrc}
@@ -53,7 +53,7 @@ export default function DoctorCard({
           ) : (
             <span
               aria-hidden="true"
-              className="flex h-full w-full items-center justify-center text-lg font-semibold text-slate-500 dark:text-slate-400"
+              className="flex h-full w-full items-center justify-center text-base sm:text-lg font-semibold text-slate-500 dark:text-slate-400"
             >
               {name
                 .replace(/^Dr\.\s*/i, "")
@@ -68,7 +68,7 @@ export default function DoctorCard({
 
         {/* Doctor Details */}
         <div className="flex flex-col min-w-0 text-left">
-          <h3 className="font-bold text-slate-900 dark:text-slate-100 text-lg tracking-tight truncate">
+          <h3 className="font-bold text-slate-900 dark:text-slate-100 text-base sm:text-lg tracking-tight truncate">
             {targetHref ? (
               <Link href={targetHref} className="hover:underline hover:text-blue-600 dark:hover:text-blue-400">
                 {name}
@@ -77,14 +77,14 @@ export default function DoctorCard({
               name
             )}
           </h3>
-          <p className="text-slate-500 dark:text-slate-400 text-base font-normal -mt-0.5 truncate">
+          <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm font-normal -mt-0.5 truncate">
             {specialty}
           </p>
 
           {/* Rating & Reviews */}
           <div className="flex items-center gap-1.5 mt-1">
-            <Star className="w-4 h-4 fill-amber-400 text-amber-400 shrink-0" />
-            <span className="text-slate-600 dark:text-slate-300 text-sm font-medium">
+            <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-amber-400 text-amber-400 shrink-0" />
+            <span className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm font-medium">
               {rating} ({reviewCount} reviews)
             </span>
           </div>
@@ -95,7 +95,7 @@ export default function DoctorCard({
       {targetHref ? (
         <Link
           href={targetHref}
-          className="w-full py-2.5 px-4 bg-[#1d9bf0] hover:bg-blue-600 active:bg-blue-700 text-white font-medium text-base rounded-xl transition-colors shadow-xs text-center block"
+          className="w-full py-2 sm:py-2.5 px-4 bg-[#1d9bf0] hover:bg-blue-600 active:bg-blue-700 text-white font-medium text-sm sm:text-base rounded-xl transition-colors shadow-xs text-center block"
         >
           View Profile
         </Link>
@@ -103,7 +103,7 @@ export default function DoctorCard({
         <button
           type="button"
           onClick={onViewProfile}
-          className="w-full py-2.5 px-4 bg-[#1d9bf0] hover:bg-blue-600 active:bg-blue-700 text-white font-medium text-base rounded-xl transition-colors shadow-xs"
+          className="w-full py-2 sm:py-2.5 px-4 bg-[#1d9bf0] hover:bg-blue-600 active:bg-blue-700 text-white font-medium text-sm sm:text-base rounded-xl transition-colors shadow-xs"
         >
           View Profile
         </button>

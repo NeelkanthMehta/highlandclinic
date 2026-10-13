@@ -287,8 +287,8 @@ function BookAppointmentContent() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto space-y-8">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-6 sm:py-8 px-3.5 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8">
         
         {/* Header Breadcrumb & Title */}
         <div className="space-y-3">
@@ -503,7 +503,7 @@ function BookAppointmentContent() {
                 type="button"
                 disabled={!selectedDoctorId}
                 onClick={() => setStep(2)}
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:opacity-50 text-white font-bold text-sm rounded-xl transition-all shadow-xs flex items-center gap-2"
+                className="w-full sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:opacity-50 text-white font-bold text-sm rounded-xl transition-all shadow-xs flex items-center justify-center gap-2"
               >
                 Proceed to Schedule <ChevronRight className="w-4 h-4" />
               </button>
@@ -516,7 +516,7 @@ function BookAppointmentContent() {
           <div className="space-y-6">
             {/* Selected Doctor Summary Card */}
             {selectedDoctor && (
-              <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-4">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl p-4 sm:p-5 border border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3.5 min-w-0">
                   {selectedDoctor.image ? (
                     // eslint-disable-next-line @next/next/no-img-element
@@ -534,7 +534,7 @@ function BookAppointmentContent() {
                     <h4 className="font-bold text-slate-900 dark:text-white text-base truncate">
                       {selectedDoctor.name}
                     </h4>
-                    <p className="text-xs text-blue-600 dark:text-blue-400 font-semibold">
+                    <p className="text-xs text-blue-600 dark:text-blue-400 font-semibold truncate">
                       {selectedDoctor.doctorProfile?.specialty}
                     </p>
                   </div>
@@ -550,7 +550,7 @@ function BookAppointmentContent() {
             )}
 
             {/* Date & Slot Picker Grid */}
-            <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 space-y-6">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl p-4 sm:p-6 border border-slate-200/80 dark:border-slate-800 space-y-6">
               
               {/* Date Input */}
               <div className="space-y-2">
@@ -563,7 +563,7 @@ function BookAppointmentContent() {
                   min={getTodayStr()}
                   value={selectedDate}
                   onChange={(e) => setSelectedDate(e.target.value)}
-                  className="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm font-semibold focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-base sm:text-sm font-semibold focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 />
                 <p className="text-xs text-slate-500 dark:text-slate-400">
                   Showing slots for: <span className="font-semibold text-slate-700 dark:text-slate-300">{formatDateReadable(selectedDate)}</span>
@@ -588,7 +588,7 @@ function BookAppointmentContent() {
                     {slotMessage}
                   </div>
                 ) : (
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 sm:gap-3">
                     {slots.map((slot, idx) => {
                       const isSelected = selectedSlot?.time === slot.time;
                       return (
@@ -597,7 +597,7 @@ function BookAppointmentContent() {
                           type="button"
                           disabled={!slot.isAvailable}
                           onClick={() => setSelectedSlot(slot)}
-                          className={`py-3 px-3 rounded-xl text-xs font-bold border transition-all flex flex-col items-center justify-center gap-1 ${
+                          className={`py-3 px-2 sm:px-3 rounded-xl text-xs font-bold border transition-all flex flex-col items-center justify-center gap-1 min-h-[52px] ${
                             isSelected
                               ? "bg-blue-600 text-white border-blue-600 shadow-md ring-2 ring-blue-400/30"
                               : slot.isAvailable
@@ -618,11 +618,11 @@ function BookAppointmentContent() {
             </div>
 
             {/* Back / Next Buttons Step 2 */}
-            <div className="flex items-center justify-between pt-4">
+            <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-3 pt-4">
               <button
                 type="button"
                 onClick={() => setStep(1)}
-                className="px-5 py-2.5 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-sm rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                className="w-full sm:w-auto px-5 py-2.5 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-sm rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-center"
               >
                 Back
               </button>
@@ -630,7 +630,7 @@ function BookAppointmentContent() {
                 type="button"
                 disabled={!selectedSlot}
                 onClick={() => setStep(3)}
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:opacity-50 text-white font-bold text-sm rounded-xl transition-all shadow-xs flex items-center gap-2"
+                className="w-full sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:opacity-50 text-white font-bold text-sm rounded-xl transition-all shadow-xs flex items-center justify-center gap-2"
               >
                 Continue to Patient Details <ChevronRight className="w-4 h-4" />
               </button>
@@ -677,7 +677,7 @@ function BookAppointmentContent() {
                 <label className="block text-xs font-bold text-slate-700 dark:text-slate-300">
                   Who is this appointment for?
                 </label>
-                <div className="flex items-center gap-3">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                   <label className="flex items-center gap-2 cursor-pointer text-sm font-semibold text-slate-800 dark:text-slate-200">
                     <input
                       type="radio"
@@ -714,7 +714,7 @@ function BookAppointmentContent() {
                     placeholder="e.g. Son, Daughter, Mother"
                     value={patientRelation}
                     onChange={(e) => setPatientRelation(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-base sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                   />
                 </div>
               )}
@@ -731,7 +731,7 @@ function BookAppointmentContent() {
                     placeholder="e.g. Jane Doe"
                     value={patientName}
                     onChange={(e) => setPatientName(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-base sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                   />
                 </div>
 
@@ -745,7 +745,7 @@ function BookAppointmentContent() {
                     placeholder="e.g. +1 (555) 000-1234"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-base sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -760,7 +760,7 @@ function BookAppointmentContent() {
                     type="date"
                     value={patientdateofbirth}
                     onChange={(e) => setPatientdateofbirth(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-base sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                   />
                 </div>
 
@@ -773,7 +773,7 @@ function BookAppointmentContent() {
                     placeholder="e.g. Annual Checkup, Chest Pain, Routine Consultation"
                     value={reasonForVisit}
                     onChange={(e) => setReasonForVisit(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-base sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -788,7 +788,7 @@ function BookAppointmentContent() {
                   placeholder="Mention any existing symptoms, medical history, or insurance query..."
                   value={additionalNotes}
                   onChange={(e) => setAdditionalNotes(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-base sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
                 ></textarea>
               </div>
 
@@ -847,18 +847,18 @@ function BookAppointmentContent() {
             </div>
 
             {/* Back & Submit Buttons Step 3 */}
-            <div className="flex items-center justify-between pt-4">
+            <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-3 pt-4">
               <button
                 type="button"
                 onClick={() => setStep(2)}
-                className="px-5 py-2.5 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-sm rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                className="w-full sm:w-auto px-5 py-2.5 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-sm rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-center"
               >
                 Back
               </button>
               <button
                 type="submit"
                 disabled={submitting}
-                className="px-8 py-3 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:opacity-50 text-white font-bold text-sm rounded-xl transition-all shadow-md flex items-center gap-2"
+                className="w-full sm:w-auto px-8 py-3 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:opacity-50 text-white font-bold text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-2"
               >
                 {submitting ? (
                   <>
@@ -876,7 +876,7 @@ function BookAppointmentContent() {
 
         {/* STEP 4: CONFIRMATION RECEIPT VIEW */}
         {step === 4 && confirmedAppointment && (
-          <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200/80 dark:border-slate-800 shadow-lg space-y-6 max-w-2xl mx-auto">
+          <div className="bg-white dark:bg-slate-900 rounded-3xl p-5 sm:p-8 border border-slate-200/80 dark:border-slate-800 shadow-lg space-y-6 max-w-2xl mx-auto">
             
             <div className="text-center space-y-3">
               <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 rounded-full flex items-center justify-center mx-auto shadow-xs">
@@ -902,30 +902,30 @@ function BookAppointmentContent() {
 
             {/* Details Table */}
             <div className="space-y-3 divide-y divide-slate-100 dark:divide-slate-800 text-sm">
-              <div className="flex justify-between py-2.5">
+              <div className="flex flex-col sm:flex-row sm:justify-between py-2.5 gap-1 sm:gap-2">
                 <span className="text-slate-500 dark:text-slate-400 font-medium">Physician</span>
-                <span className="font-bold text-slate-900 dark:text-white text-right">
+                <span className="font-bold text-slate-900 dark:text-white text-left sm:text-right">
                   {confirmedAppointment.doctor?.name} ({confirmedAppointment.doctor?.doctorProfile?.specialty})
                 </span>
               </div>
 
-              <div className="flex justify-between py-2.5">
+              <div className="flex flex-col sm:flex-row sm:justify-between py-2.5 gap-1 sm:gap-2">
                 <span className="text-slate-500 dark:text-slate-400 font-medium">Patient Name</span>
-                <span className="font-bold text-slate-900 dark:text-white text-right">
+                <span className="font-bold text-slate-900 dark:text-white text-left sm:text-right">
                   {confirmedAppointment.patientName}
                 </span>
               </div>
 
-              <div className="flex justify-between py-2.5">
+              <div className="flex flex-col sm:flex-row sm:justify-between py-2.5 gap-1 sm:gap-2">
                 <span className="text-slate-500 dark:text-slate-400 font-medium">Contact Phone</span>
-                <span className="font-semibold text-slate-900 dark:text-white text-right">
+                <span className="font-semibold text-slate-900 dark:text-white text-left sm:text-right">
                   {confirmedAppointment.phoneNumber}
                 </span>
               </div>
 
-              <div className="flex justify-between py-2.5">
+              <div className="flex flex-col sm:flex-row sm:justify-between py-2.5 gap-1 sm:gap-2">
                 <span className="text-slate-500 dark:text-slate-400 font-medium">Date</span>
-                <span className="font-bold text-slate-900 dark:text-white text-right">
+                <span className="font-bold text-slate-900 dark:text-white text-left sm:text-right">
                   {new Date(confirmedAppointment.appointmentStartUTC).toLocaleDateString("en-US", {
                     weekday: "short",
                     month: "short",
@@ -935,25 +935,27 @@ function BookAppointmentContent() {
                 </span>
               </div>
 
-              <div className="flex justify-between py-2.5">
+              <div className="flex flex-col sm:flex-row sm:justify-between py-2.5 gap-1 sm:gap-2">
                 <span className="text-slate-500 dark:text-slate-400 font-medium">Time Slot</span>
-                <span className="font-bold text-blue-600 dark:text-blue-400 text-right">
+                <span className="font-bold text-blue-600 dark:text-blue-400 text-left sm:text-right">
                   {formatTime(confirmedAppointment.appointmentStartUTC)} - {formatTime(confirmedAppointment.appointmentEndUTC)}
                 </span>
               </div>
 
-              <div className="flex justify-between py-2.5">
+              <div className="flex flex-col sm:flex-row sm:justify-between py-2.5 gap-1 sm:gap-2">
                 <span className="text-slate-500 dark:text-slate-400 font-medium">Payment Method</span>
-                <span className="font-semibold text-slate-900 dark:text-white text-right">
+                <span className="font-semibold text-slate-900 dark:text-white text-left sm:text-right">
                   {confirmedAppointment.paymentMethod === "CASH" ? "Pay at Clinic (Cash / Card)" : "Online Payment"}
                 </span>
               </div>
 
-              <div className="flex justify-between py-2.5">
+              <div className="flex flex-col sm:flex-row sm:justify-between py-2.5 gap-1 sm:gap-2">
                 <span className="text-slate-500 dark:text-slate-400 font-medium">Status</span>
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
-                  {confirmedAppointment.status}
-                </span>
+                <div>
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                    {confirmedAppointment.status}
+                  </span>
+                </div>
               </div>
             </div>
 

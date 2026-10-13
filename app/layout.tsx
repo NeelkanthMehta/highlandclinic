@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import Footer from "@/components/organisms/footer";
 import Header from "@/components/organisms/header";
@@ -24,6 +24,12 @@ export const metadata: Metadata = {
   description: "Excellence in Healthcare, Committed to Your Well-being",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export default async function RootLayout({
   children,
 }: {
@@ -36,7 +42,7 @@ export default async function RootLayout({
       lang="en"
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col overflow-x-hidden">
         <SessionTimeoutProvider user={user}>
           <Header user={user} />
           {children}

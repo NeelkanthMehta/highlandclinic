@@ -94,7 +94,7 @@ export default function AppointmentsList({
             {upcoming.map((apt) => (
               <div
                 key={apt.appointmentId}
-                className="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 flex flex-col md:flex-row md:items-center justify-between gap-4"
+                className="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4"
               >
                 <div className="space-y-1">
                   <div className="flex items-center gap-2 font-bold text-slate-900 dark:text-white text-sm">
@@ -119,7 +119,7 @@ export default function AppointmentsList({
                   )}
                 </div>
 
-                <div className="flex flex-wrap items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-200/60 dark:border-slate-700/60 w-full sm:w-auto justify-start sm:justify-end">
                   <span
                     className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase ${
                       apt.status === "BOOKING_CONFIRMED" || apt.status === "COMPLETED"

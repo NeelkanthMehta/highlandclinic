@@ -279,8 +279,12 @@
   --shadow-medium: 0px 1px 4px 0px rgba(0, 0, 0, 0.15);
   --shadow-large: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
 
+  --breakpoint-xs: 475px;
+  --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 }
 
 @layer base {

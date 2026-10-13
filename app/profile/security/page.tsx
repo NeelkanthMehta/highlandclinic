@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Lock, Shield, Bell, CheckCircle2, AlertCircle } from "lucide-react";
+import Link from "next/link";
+import { Lock, Shield, Bell, CheckCircle2, AlertCircle, ArrowLeft } from "lucide-react";
 
 export default function SecuritySettingsPage() {
   // Password state
@@ -43,7 +44,16 @@ export default function SecuritySettingsPage() {
   };
 
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200/80 dark:border-slate-800 shadow-xl space-y-8">
+    <div className="min-h-screen bg-slate-50/60 dark:bg-slate-950 py-6 sm:py-8 px-3.5 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto space-y-6">
+        <Link
+          href="/profile"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" /> Back to Profile
+        </Link>
+
+        <div className="bg-white dark:bg-slate-900 rounded-3xl p-4 sm:p-8 border border-slate-200/80 dark:border-slate-800 shadow-xl space-y-8">
       <div>
         <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
           <Lock className="w-5 h-5 text-blue-600" />
@@ -85,7 +95,7 @@ export default function SecuritySettingsPage() {
               value={currentPassword}
               onChange={(e) => setCurrentPassword(e.target.value)}
               placeholder="••••••••"
-              className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-base sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
           </div>
 
@@ -99,7 +109,7 @@ export default function SecuritySettingsPage() {
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
               placeholder="At least 6 characters"
-              className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-base sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
           </div>
 
@@ -113,7 +123,7 @@ export default function SecuritySettingsPage() {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Re-enter new password"
-              className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-base sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
           </div>
         </div>
@@ -122,7 +132,7 @@ export default function SecuritySettingsPage() {
           <button
             type="submit"
             disabled={updatingPassword}
-            className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md"
+            className="w-full sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md text-center"
           >
             {updatingPassword ? "Updating..." : "Update Password"}
           </button>
@@ -208,6 +218,8 @@ export default function SecuritySettingsPage() {
             </label>
           </div>
         </div>
+      </div>
+    </div>
       </div>
     </div>
   );

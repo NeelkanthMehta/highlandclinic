@@ -99,7 +99,7 @@ function SignInForm() {
       </div>
 
       {/* Demo Doctor Sign-In Shortcut Banner */}
-      <div className="p-3.5 rounded-2xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800/80 text-xs flex items-center justify-between gap-2">
+      <div className="p-3.5 rounded-2xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800/80 text-xs flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2">
         <div className="flex items-center gap-2 text-blue-800 dark:text-blue-200 font-medium">
           <Stethoscope className="w-4 h-4 text-blue-600 shrink-0" />
           <span>Doctor Demo Login?</span>
@@ -107,7 +107,7 @@ function SignInForm() {
         <button
           type="button"
           onClick={handleQuickFillDoctor}
-          className="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-[11px] transition-colors"
+          className="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-[11px] transition-colors shrink-0"
         >
           Autofill Dr. Sarah Jenkins
         </button>
@@ -142,7 +142,7 @@ function SignInForm() {
               placeholder="e.g. name@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-base sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
           </div>
         </div>
@@ -161,7 +161,7 @@ function SignInForm() {
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-base sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
             <button
               type="button"

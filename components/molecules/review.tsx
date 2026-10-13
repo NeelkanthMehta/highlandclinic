@@ -32,7 +32,7 @@ export default function Review({
   return (
     <Card
       className={cn(
-        "w-full max-w-md p-6 border border-slate-200/90 rounded-2xl bg-white dark:bg-slate-900 dark:border-slate-800 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between select-none",
+        "w-[calc(100vw-3rem)] max-w-sm sm:max-w-md p-5 sm:p-6 border border-slate-200/90 rounded-2xl bg-white dark:bg-slate-900 dark:border-slate-800 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between select-none",
         className
       )}
     >

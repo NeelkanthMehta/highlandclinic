@@ -125,14 +125,14 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
   return (
     <main className="flex-1 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen">
       {/* 1. HERO BANNER SECTION */}
-      <section className="relative w-full bg-gradient-to-b from-blue-900 via-slate-900 to-[#101828] text-white pt-10 pb-16 px-6 overflow-hidden">
+      <section className="relative w-full bg-gradient-to-b from-blue-900 via-slate-900 to-[#101828] text-white pt-6 sm:pt-10 pb-10 sm:pb-16 px-4 sm:px-6 overflow-hidden">
         {/* Abstract Background Accents */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-10 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Breadcrumb Navigation */}
-          <nav className="flex items-center gap-2 text-xs sm:text-sm text-slate-300 mb-6 font-medium">
+          <nav className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-300 mb-4 sm:mb-6 font-medium">
             <Link href="/" className="hover:text-white transition-colors">
               Home
             </Link>
@@ -144,27 +144,27 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
             <span className="text-sky-400 font-semibold">{metadata.title}</span>
           </nav>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
             {/* Left Hero Content */}
-            <div className="lg:col-span-8 space-y-5">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/30 text-sky-300 text-xs sm:text-sm font-semibold tracking-wide">
+            <div className="lg:col-span-8 space-y-4 sm:space-y-5">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/30 text-sky-300 text-xs sm:text-sm font-semibold tracking-wide">
                 <IconComponent className="w-4 h-4 text-sky-400" />
                 <span>Highland Specialized Medical Department</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
                 {metadata.title}
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-3xl">
+              <p className="text-sm sm:text-base md:text-lg text-slate-300 font-normal leading-relaxed max-w-3xl">
                 {metadata.tagline}. {metadata.description}
               </p>
 
               {/* CTAs */}
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
                 <Link
                   href={`/book-appointment?department=${metadata.slug}`}
-                  className="px-6 py-3 bg-[#1B9AF5] hover:bg-blue-600 active:bg-blue-700 text-white font-semibold text-base rounded-xl transition-all shadow-md shadow-blue-500/20 flex items-center gap-2"
+                  className="px-5 sm:px-6 py-3 bg-[#1B9AF5] hover:bg-blue-600 active:bg-blue-700 text-white font-semibold text-sm sm:text-base rounded-xl transition-all shadow-md shadow-blue-500/20 flex items-center justify-center gap-2"
                 >
                   <Calendar className="w-5 h-5" />
                   <span>Book Department Appointment</span>
@@ -172,7 +172,7 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
 
                 <a
                   href="#team"
-                  className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold text-base rounded-xl transition-all flex items-center gap-2 backdrop-blur-sm"
+                  className="px-5 sm:px-6 py-3 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold text-sm sm:text-base rounded-xl transition-all flex items-center justify-center gap-2 backdrop-blur-sm"
                 >
                   <UserCheck className="w-5 h-5 text-emerald-400" />
                   <span>View Specialists ({displayDoctors.length})</span>
@@ -210,13 +210,13 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
           </div>
 
           {/* Key Metrics Bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-8 border-t border-white/10">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/10">
             {metadata.keyStats.map((stat, idx) => (
               <div
                 key={idx}
-                className="bg-white/5 border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-colors"
+                className="bg-white/5 border border-white/10 rounded-xl p-3 sm:p-4 text-center hover:bg-white/10 transition-colors"
               >
-                <div className="text-2xl sm:text-3xl font-extrabold text-sky-400 tracking-tight">
+                <div className="text-xl sm:text-3xl font-extrabold text-sky-400 tracking-tight">
                   {stat.stat}
                 </div>
                 <div className="text-xs sm:text-sm text-slate-300 font-medium mt-1">
@@ -229,7 +229,7 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
       </section>
 
       {/* 2. OVERVIEW & SPECIALIZATIONS SECTION */}
-      <section className="py-14 px-6 max-w-7xl mx-auto space-y-12">
+      <section className="py-10 sm:py-14 px-4 sm:px-6 max-w-7xl mx-auto space-y-8 sm:space-y-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Specializations Column */}
           <div className="lg:col-span-7 space-y-6">
@@ -514,26 +514,26 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
         </div>
 
         {/* 8. CALL TO ACTION BANNER */}
-        <div className="bg-gradient-to-r from-blue-600 to-[#1B9AF5] text-white p-8 sm:p-10 rounded-3xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="bg-gradient-to-r from-blue-600 to-[#1B9AF5] text-white p-6 sm:p-10 rounded-2xl sm:rounded-3xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center md:text-left max-w-2xl">
-            <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight">
               Ready to Schedule a Consultation with {metadata.dbName}?
             </h3>
-            <p className="text-blue-100 text-sm sm:text-base">
+            <p className="text-blue-100 text-xs sm:text-sm md:text-base">
               Book your appointment online today with our board-certified specialist team at Highland Medical Center.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+          <div className="flex flex-col sm:flex-row gap-3 shrink-0 w-full md:w-auto">
             <Link
               href={`/book-appointment?department=${metadata.slug}`}
-              className="px-6 py-3 bg-white hover:bg-slate-100 text-blue-600 font-bold text-base rounded-xl transition-all shadow-md text-center"
+              className="w-full sm:w-auto px-6 py-3 bg-white hover:bg-slate-100 text-blue-600 font-bold text-sm sm:text-base rounded-xl transition-all shadow-md text-center"
             >
               Book Appointment Now
             </Link>
             <Link
               href="/departments"
-              className="px-5 py-3 bg-blue-700/50 hover:bg-blue-700 text-white font-medium text-base rounded-xl transition-all border border-white/20 text-center"
+              className="w-full sm:w-auto px-5 py-3 bg-blue-700/50 hover:bg-blue-700 text-white font-medium text-sm sm:text-base rounded-xl transition-all border border-white/20 text-center"
             >
               All Departments
             </Link>

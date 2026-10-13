@@ -41,18 +41,18 @@ export default function DepartmentCard({
     <Card
       onClick={onClick}
       className={cn(
-        "group relative flex flex-col items-center justify-center p-8 w-52 h-44 text-center cursor-pointer transition-all duration-200 hover:shadow-lg hover:border-sky-300 dark:hover:border-sky-700 bg-white dark:bg-slate-900 rounded-2xl select-none border border-slate-200/90 dark:border-slate-800",
+        "group relative flex flex-col items-center justify-center p-5 sm:p-8 w-44 xs:w-52 h-38 sm:h-44 text-center cursor-pointer transition-all duration-200 hover:shadow-lg hover:border-sky-300 dark:hover:border-sky-700 bg-white dark:bg-slate-900 rounded-2xl select-none border border-slate-200/90 dark:border-slate-800",
         className
       )}
     >
-      <CardContent className="flex flex-col items-center justify-center p-0 gap-3">
+      <CardContent className="flex flex-col items-center justify-center p-0 gap-2 sm:gap-3">
         {/* Icon Container */}
         <div className="flex items-center justify-center">
           {renderIcon()}
         </div>
 
         {/* Title */}
-        <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 tracking-tight group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+        <h3 className="text-base sm:text-xl font-bold text-slate-900 dark:text-slate-100 tracking-tight group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
           {title}
         </h3>
       </CardContent>

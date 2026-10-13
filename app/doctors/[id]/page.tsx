@@ -197,13 +197,13 @@ export default async function DoctorProfilePage({ params }: DoctorProfilePagePro
   const dbTestimonials = user.doctorTestimonials || [];
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto space-y-8">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-6 sm:py-8 px-3.5 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8">
         {/* Navigation Breadcrumb & Back Link */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-2.5">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Doctors Overview
@@ -215,14 +215,14 @@ export default async function DoctorProfilePage({ params }: DoctorProfilePagePro
         </div>
 
         {/* Doctor Main Hero Card */}
-        <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden">
+        <div className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden">
           {/* Subtle Accent Background Gradient */}
           <div className="absolute top-0 right-0 -mt-12 -mr-12 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="flex flex-col md:flex-row gap-8 items-start relative z-10">
+          <div className="flex flex-col md:flex-row gap-6 sm:gap-8 items-start relative z-10">
             {/* Avatar Section */}
             <div className="relative shrink-0 mx-auto md:mx-0">
-              <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 shadow-md">
+              <div className="w-32 h-32 sm:w-44 sm:h-44 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 shadow-md">
                 {user.image ? (
                   <img
                     src={user.image}
@@ -322,43 +322,43 @@ export default async function DoctorProfilePage({ params }: DoctorProfilePagePro
         </div>
 
         {/* Quick Highlights Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 text-center space-y-1">
-            <Award className="w-6 h-6 text-blue-500 mx-auto" />
-            <div className="text-2xl font-bold text-slate-900 dark:text-slate-50">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4">
+          <div className="bg-white dark:bg-slate-900 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200/80 dark:border-slate-800 text-center space-y-1">
+            <Award className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500 mx-auto" />
+            <div className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-50">
               {meta.experienceYears}+ Years
             </div>
-            <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+            <div className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">
               Medical Experience
             </div>
           </div>
 
-          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 text-center space-y-1">
-            <ThumbsUp className="w-6 h-6 text-emerald-500 mx-auto" />
-            <div className="text-2xl font-bold text-slate-900 dark:text-slate-50">
+          <div className="bg-white dark:bg-slate-900 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200/80 dark:border-slate-800 text-center space-y-1">
+            <ThumbsUp className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-500 mx-auto" />
+            <div className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-50">
               98%
             </div>
-            <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+            <div className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">
               Patient Satisfaction Rate
             </div>
           </div>
 
-          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 text-center space-y-1">
-            <MessageSquare className="w-6 h-6 text-amber-500 mx-auto" />
-            <div className="text-2xl font-bold text-slate-900 dark:text-slate-50">
+          <div className="bg-white dark:bg-slate-900 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200/80 dark:border-slate-800 text-center space-y-1">
+            <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-amber-500 mx-auto" />
+            <div className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-50">
               {reviewCount}
             </div>
-            <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+            <div className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">
               Verified Patient Reviews
             </div>
           </div>
 
-          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 text-center space-y-1">
-            <ShieldCheck className="w-6 h-6 text-purple-500 mx-auto" />
-            <div className="text-2xl font-bold text-slate-900 dark:text-slate-50">
+          <div className="bg-white dark:bg-slate-900 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200/80 dark:border-slate-800 text-center space-y-1">
+            <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-purple-500 mx-auto" />
+            <div className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-50">
               Board Certified
             </div>
-            <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+            <div className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">
               {specialty} Specialist
             </div>
           </div>

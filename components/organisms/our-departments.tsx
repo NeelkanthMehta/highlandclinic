@@ -40,11 +40,11 @@ export default function OurDepartments({
   className = "",
 }: OurDepartmentsProps) {
   return (
-    <section className={`w-full py-12 px-6 flex flex-col items-center justify-center ${className}`}>
-      <div className="max-w-6xl w-full mx-auto space-y-8 text-center">
+    <section className={`w-full py-10 sm:py-14 px-4 sm:px-6 flex flex-col items-center justify-center ${className}`}>
+      <div className="max-w-6xl w-full mx-auto space-y-6 sm:space-y-8 text-center">
         {/* Welcome / Intro Text */}
         {description && (
-          <p className="text-slate-600 dark:text-slate-400 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed font-normal">
+          <p className="text-slate-600 dark:text-slate-400 max-w-3xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed font-normal">
             {description}
           </p>
         )}

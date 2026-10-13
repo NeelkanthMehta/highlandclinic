@@ -69,23 +69,23 @@ export default async function DepartmentsIndexPage() {
   };
 
   return (
-    <main className="flex-1 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen py-12 px-6">
-      <div className="max-w-7xl mx-auto space-y-10">
+    <main className="flex-1 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen py-8 sm:py-12 px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto space-y-8 sm:space-y-10">
         {/* Header Title Section */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+        <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
           <span className="px-3.5 py-1.5 rounded-full bg-blue-500/10 text-sky-600 dark:text-sky-400 border border-blue-500/20 text-xs font-bold uppercase tracking-wider">
             Highland Clinical Care
           </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">
             Our Medical Departments
           </h1>
-          <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed font-normal">
+          <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base md:text-lg leading-relaxed font-normal">
             Welcome to Highland Medical Center. Browse our specialized clinical departments to view services, facilities, physician profiles, and book appointments.
           </p>
         </div>
 
         {/* Department Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {dbDepartments.map((dept) => {
             const slug = normalizeDepartmentSlug(dept.name);
             const meta = getDepartmentMetadata(slug);
@@ -96,7 +96,7 @@ export default async function DepartmentsIndexPage() {
               <Link
                 key={dept.id}
                 href={`/departments/${slug}`}
-                className="group relative bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 p-6 rounded-2xl shadow-2xs hover:shadow-lg hover:border-sky-300 dark:hover:border-sky-700 transition-all duration-200 flex flex-col justify-between"
+                className="group relative bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 p-5 sm:p-6 rounded-2xl shadow-2xs hover:shadow-lg hover:border-sky-300 dark:hover:border-sky-700 transition-all duration-200 flex flex-col justify-between"
               >
                 <div className="space-y-4">
                   {/* Top Row: Icon & Doctor Count Badge */}

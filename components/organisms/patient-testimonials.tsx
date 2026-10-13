@@ -72,8 +72,8 @@ export default function PatientTestimonials({
   className = "",
 }: PatientTestimonialsProps) {
   return (
-    <section className={`w-full py-12 px-6 flex flex-col items-center justify-center ${className}`}>
-      <div className="max-w-6xl w-full mx-auto space-y-8 text-center">
+    <section className={`w-full py-10 sm:py-14 px-4 sm:px-6 flex flex-col items-center justify-center ${className}`}>
+      <div className="max-w-6xl w-full mx-auto space-y-6 sm:space-y-8 text-center">
         {/* Section Heading */}
         <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">
           {heading}

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Shield, Upload, FileText, CheckCircle2, Image as ImageIcon } from "lucide-react";
+import Link from "next/link";
+import { Shield, Upload, FileText, CheckCircle2, Image as ImageIcon, ArrowLeft } from "lucide-react";
 
 export default function MedicalInsurancePage() {
   const [carrier, setCarrier] = useState("Blue Cross Blue Shield");
@@ -32,7 +33,16 @@ export default function MedicalInsurancePage() {
   };
 
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200/80 dark:border-slate-800 shadow-xl space-y-6">
+    <div className="min-h-screen bg-slate-50/60 dark:bg-slate-950 py-6 sm:py-8 px-3.5 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto space-y-6">
+        <Link
+          href="/profile"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" /> Back to Profile
+        </Link>
+
+        <div className="bg-white dark:bg-slate-900 rounded-3xl p-4 sm:p-8 border border-slate-200/80 dark:border-slate-800 shadow-xl space-y-6">
       <div>
         <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
           <Shield className="w-5 h-5 text-blue-600" />
@@ -148,12 +158,14 @@ export default function MedicalInsurancePage() {
           <button
             type="submit"
             disabled={saving}
-            className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md"
+            className="w-full sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md text-center"
           >
             {saving ? "Saving Records..." : "Save Medical & Insurance"}
           </button>
         </div>
       </form>
+        </div>
+      </div>
     </div>
   );
 }
